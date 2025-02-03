@@ -1,1 +1,21 @@
-test
+# Alten Project
+
+Ce projet utilise **Java Spring** pour la gestion de la logique métier, et **PostgreSQL** pour la base de données. Un fichier **Dockerfile** est inclus pour créer une image Docker de la base de données PostgreSQL, simplifiant ainsi l'intégration et le déploiement.
+
+
+## Installation
+
+### Cloner le repository
+
+Commence par cloner le repository du projet sur ta machine locale :
+
+```bash
+git clone https://github.com/ton-utilisateur/alten-project.git
+cd alten-project
+
+
+### Construire l'image Docker de la base de données
+
+Lancez la partie Back End
+
+
