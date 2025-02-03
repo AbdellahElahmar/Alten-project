@@ -6,10 +6,9 @@
       <ul class="cart-items-list">
         <li *ngFor="let item of cartItems; let i = index" class="cart-item">
           <div class="item-details">
+            <button style="margin-right: 2px" pButton icon="pi pi-trash" class="trash-btn" (click)="removeItem(i)"></button>
             <i class="pi pi-box" style="font-size: 1.5rem; margin-right: 10px;"></i>
             <span>{{ item.name }}</span>
-            <!-- Ajout du bouton trash -->
-            <button pButton icon="pi pi-trash" class="trash-btn" (click)="removeItem(i)"></button>
           </div>
           <div class="item-quantity">
             <input type="number" [(ngModel)]="item.quantity" class="quantity-input" (ngModelChange)="updateQuantity(i)" />
@@ -27,6 +26,6 @@
   </div>
 
   <p-footer>
-    <button type="button" pButton label="Fermer" icon="pi pi-times" class="close-btn" (click)="showSidebar = false"></button>
+    <button type="button" pButton label="Fermer" icon="pi pi-times" class="close-btn" (click)="onSidebarClose()"></button>
   </p-footer>
 </p-sidebar>
