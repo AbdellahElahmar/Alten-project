@@ -22,7 +22,7 @@
 
 
       <i class="pi pi-shopping-cart" style="font-size: 2rem" (click)="showSidebar = true"></i>
-      <div id="cart-count" class="cart-count">{{totalProducts}}</div>
+      <div id="cart-count" class="cart-count">{{JSON.parse(localStorage.getItem('cart') || '[]').length}}</div>
 
 
       <ng-container *ngIf="showSidebar">

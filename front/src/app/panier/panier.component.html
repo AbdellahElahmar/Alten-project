@@ -8,6 +8,8 @@
           <div class="item-details">
             <i class="pi pi-box" style="font-size: 1.5rem; margin-right: 10px;"></i>
             <span>{{ item.name }}</span>
+            <!-- Ajout du bouton trash -->
+            <button pButton icon="pi pi-trash" class="trash-btn" (click)="removeItem(i)"></button>
           </div>
           <div class="item-quantity">
             <input type="number" [(ngModel)]="item.quantity" class="quantity-input" (ngModelChange)="updateQuantity(i)" />
@@ -28,4 +30,3 @@
     <button type="button" pButton label="Fermer" icon="pi pi-times" class="close-btn" (click)="showSidebar = false"></button>
   </p-footer>
 </p-sidebar>
-

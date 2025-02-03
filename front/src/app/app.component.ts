@@ -24,7 +24,6 @@ export class AppComponent implements OnInit{
   display: boolean = false;
   showSidebar: boolean = false;
   menuItems: any[] = []
-  totalProducts: number = JSON.parse(localStorage.getItem('cart') || '[]').length
   protected readonly localStorage = localStorage;
 
   constructor(private router: Router) {
@@ -61,4 +60,5 @@ export class AppComponent implements OnInit{
     this.router.navigate(['/home']);
   }
 
+  protected readonly JSON = JSON;
 }

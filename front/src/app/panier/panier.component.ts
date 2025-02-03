@@ -29,6 +29,11 @@ export class PanierComponent implements OnInit{
     this.cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
   }
 
+  removeItem(index: number): void {
+    this.cartItems.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+  }
+
   onSidebarClose() {
     this.closeEvent.emit()
   }
