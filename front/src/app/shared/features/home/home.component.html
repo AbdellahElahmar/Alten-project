@@ -1,0 +1,57 @@
+<div class="m-4">
+  <div class="flex justify-between items-center mb-4">
+    <h5 class="text-xl font-bold">Produits</h5>
+  </div>
+  <div style="width: 100%; float: right">
+
+    <input style="float: right; width: 30%; margin-bottom: 2px"
+           type="text"
+           placeholder="Rechercher..."
+           [(ngModel)]="searchQuery" (ngModelChange)="loadProducts()"
+           class="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-1/3"
+    >
+  </div>
+
+
+  <div class="home-container">
+
+    <div *ngFor="let product of products()" class="product-card bg-white rounded-2xl p-4 shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
+      <div class="relative">
+        <div class="absolute top-2 left-2 bg-yellow-400 px-2 py-1 rounded-lg text-sm font-medium">
+          {{ product.category }}
+        </div>
+        <button *ngIf="JSON.stringify(localStorage.getItem('jwtToken')) != 'null'" (click)="addToFavorites(product)"
+                class="absolute top-2 right-2 p-2 rounded-full bg-transparent border-transparent text-red-500 hover:text-red-700 focus:outline-none transition-all">
+          <i class="pi pi-heart text-2xl"></i>
+        </button>
+      </div>
+
+      <div class="p-4">
+        <h5 class="text-lg font-bold mb-2 text-gray-800">{{ product.name }}</h5>
+        <p class="text-gray-500 mb-2">{{ product.description }}</p>
+        <p class="text-green-600 text-xl font-semibold mb-2">{{ product.price | currency: 'USD' }}</p>
+        <p-rating [(ngModel)]="product.rating" [stars]="5" [cancel]="false" class="mb-4"></p-rating>
+
+        <input
+          type="number"
+          [(ngModel)]="product.quantity"
+          min="1"
+          placeholder="Quantité"
+          class="w-full mb-2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+
+        <button
+          type="button"
+          class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          (click)="showDialog(product)">
+          Ajouter au Panier
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-container *ngIf="display">
+  <app-login [display]="display" (closeEvent)="closeDialog()"></app-login>
+</ng-container>

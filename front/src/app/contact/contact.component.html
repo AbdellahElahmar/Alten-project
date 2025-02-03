@@ -1,0 +1,54 @@
+<div class="contact-form-container">
+  <h2>Contactez-nous</h2>
+
+  <form STYLE="width: 80%" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+
+    <div class="p-field p-grid mb-5">
+      <label for="email" class="p-col-12 p-md-2 mb-5">Email :</label>
+      <div class="p-col-12 p-md-10">
+        <input
+          style="width: 125%"
+          id="email"
+          type="email"
+          pInputText
+          [(ngModel)]="email"
+          name="email"
+          required
+          email
+          placeholder="Entrez votre email"
+          class="p-inputtext-sm"
+        />
+      </div>
+    </div>
+
+    <div class="p-field p-grid">
+      <label for="message" class="p-col-12 p-md-2 mb-5">Message  :</label>
+      <div class="p-col-12 p-md-10">
+        <textarea style="width: 125%"
+          id="message"
+          pInputTextarea
+          [(ngModel)]="message"
+          name="message"
+          required
+          [maxlength]="300"
+          rows="5"
+          placeholder="Entrez votre message"
+          class="p-inputtextarea-sm"
+        ></textarea>
+      </div>
+    </div>
+
+    <p-footer>
+      <button
+        style="margin-left:48rem"
+        type="submit"
+        pButton
+        label="Envoyer"
+        icon="pi pi-send"
+        class="p-button-sm "
+      ></button>
+    </p-footer>
+  </form>
+
+  <p *ngIf="isMessageSent" class="p-success-message">Demande de contact envoyée avec succès!!.</p>
+</div>

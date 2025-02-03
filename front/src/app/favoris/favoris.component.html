@@ -1,0 +1,27 @@
+<p-toast></p-toast>
+<h5 class="text-xl font-bold mb-4">Favoris</h5>
+
+<div class="favorites-container">
+
+
+  <div *ngIf="favorites.length > 0; else noFavorites">
+    <p-card *ngFor="let favorite of favorites" [header]="favorite.name" styleClass="favorite-card">
+      <div class="favorite-content">
+        <p>{{ favorite.description }}</p>
+      </div>
+      <p-footer>
+        <button pButton type="button" label="Retirer" icon="pi pi-trash"
+                (click)="removeFromFavorites(favorite)"
+                class="p-button-danger">
+        </button>
+      </p-footer>
+    </p-card>
+  </div>
+
+  <ng-template #noFavorites>
+    <div class="empty-favorites">
+      <p>Aucun article dans la liste d'envies.</p>
+    </div>
+  </ng-template>
+
+</div>

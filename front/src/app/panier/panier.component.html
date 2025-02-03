@@ -1,0 +1,31 @@
+<p-sidebar [(visible)]="showSidebar" position="right" [modal]="true" [baseZIndex]="10000" (onHide)="onSidebarClose()">
+  <h3 class="sidebar-title">Mon Panier</h3>
+
+  <div class="cart-content">
+    <div *ngIf="cartItems.length > 0; else emptyCart">
+      <ul class="cart-items-list">
+        <li *ngFor="let item of cartItems; let i = index" class="cart-item">
+          <div class="item-details">
+            <i class="pi pi-box" style="font-size: 1.5rem; margin-right: 10px;"></i>
+            <span>{{ item.name }}</span>
+          </div>
+          <div class="item-quantity">
+            <input type="number" [(ngModel)]="item.quantity" class="quantity-input" (ngModelChange)="updateQuantity(i)" />
+            <span>{{ item.price | currency }}</span>
+          </div>
+        </li>
+      </ul>
+      <div class="cart-total">
+        <p>Total: <strong>{{ totalPrice | currency }}</strong></p>
+      </div>
+    </div>
+    <ng-template #emptyCart>
+      <p class="empty-message">Le panier est vide.</p>
+    </ng-template>
+  </div>
+
+  <p-footer>
+    <button type="button" pButton label="Fermer" icon="pi pi-times" class="close-btn" (click)="showSidebar = false"></button>
+  </p-footer>
+</p-sidebar>
+

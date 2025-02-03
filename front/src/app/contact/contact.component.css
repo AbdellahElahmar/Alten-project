@@ -1,0 +1,25 @@
+/* contact.component.css */
+.contact-form-container {
+  max-width: 900px;
+  min-height :360px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+}
+
+.p-success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+.p-button-sm {
+  margin-top: 10px;
+}

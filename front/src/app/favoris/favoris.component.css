@@ -1,0 +1,53 @@
+.favorites-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 20px;
+}
+
+.favorite-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Pour éviter que l'image dépasse de la card */
+}
+
+.favorite-content {
+  padding: 10px;
+}
+
+.favorite-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.favorite-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+p-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+p-footer button {
+  font-size: 14px;
+}
+
+/* Styles pour les Toasts */
+p-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.empty-favorites {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: #888;
+}

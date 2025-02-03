@@ -1,0 +1,68 @@
+<p-dialog (onHide)="close()" header="Connexion / Inscription" [(visible)]="display"
+          [style]="{ width: '40rem' }" [modal]="true" [closable]="true" [dismissableMask]="true">
+
+  <form [formGroup]="authForm" (ngSubmit)="isRegistering ? register() : login()">
+    <div class="p-grid" style="width: 100%">
+
+      <ng-container *ngIf="isRegistering">
+        <div class="p-field p-grid mb-5">
+          <label class="p-col-12 p-md-2 mb-5">Prénom :</label>
+          <div class="p-col-12 p-md-10">
+            <input style="width:100%" type="text" pInputText formControlName="firstName"
+                   placeholder="Entrez votre prénom" class="p-inputtext-sm" />
+            <div *ngIf="authForm.get('firstName')?.invalid" style="color:red;">
+              Prénom invalide !
+            </div>
+          </div>
+        </div>
+
+        <div class="p-field p-grid mb-5">
+          <label class="p-col-12 p-md-2 mb-5">Nom d'utilisateur :</label>
+          <div class="p-col-12 p-md-10">
+            <input style="width:100%" type="text" pInputText formControlName="username"
+                   placeholder="Entrez votre nom d'utilisateur" class="p-inputtext-sm" />
+            <div *ngIf="authForm.get('username')?.invalid" style="color:red;">
+              Username invalide !
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="p-field p-grid mb-5">
+        <label class="p-col-12 p-md-2 mb-5">Email :</label>
+        <div class="p-col-12 p-md-10">
+          <input style="width:100%" type="email" pInputText formControlName="email"
+                 placeholder="Entrez votre email" class="p-inputtext-sm" />
+          <div *ngIf="authForm.get('email')?.invalid && authForm.get('email')?.touched" style="color:red;">
+            Email invalide !
+          </div>
+        </div>
+      </div>
+
+      <div class="p-field p-grid mb-5">
+        <label class="p-col-12 p-md-2 mb-5">Mot de passe :</label>
+        <div class="p-col-12 p-md-10">
+          <input style="width:100%" type="password" pInputText formControlName="password"
+                 placeholder="Entrez votre mot de passe" class="p-inputtext-sm" />
+          <div *ngIf="authForm.get('password')?.invalid && authForm.get('password')?.touched" style="color:red;">
+            Le mot de passe doit contenir au moins 6 caractères !
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isError && !isRegistering" style="color: red;">
+        Email ou mot de passe incorrect !
+      </div>
+
+    </div>
+
+    <p-footer>
+      <div style="float: right">
+        <button style="margin-right: 2px" *ngIf="!isRegistering" type="submit" pButton label="Se connecter" icon="pi pi-check"></button>
+        <button style="margin-right: 2px" *ngIf="!isRegistering" type="button" pButton label="S'inscrire" icon="pi pi-user-plus"
+                (click)="toggleRegister()"></button>
+        <button *ngIf="isRegistering" type="submit" pButton label="S'inscrire" icon="pi pi-check"></button>
+      </div>
+    </p-footer>
+  </form>
+</p-dialog>

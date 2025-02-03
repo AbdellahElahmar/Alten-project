@@ -1,0 +1,51 @@
+<p-toolbar [style]="{ height: '100px' }">
+    <div class="p-toolbar-group-start">
+        <img src="assets/icons/icon-72x72.png" alt="logo" />
+    </div>
+    <div class="p-toolbar-group-center">
+        {{ title }}
+    </div>
+    <div class="p-toolbar-group-end">
+      <span *ngIf="!localStorage.getItem('jwtToken')" (click)="showDialog()">
+  <i class="pi pi-user" style="font-size: 2rem"></i> Se connecter
+</span>
+
+      <span *ngIf="localStorage.getItem('jwtToken')" class="p-overlay-badge">
+  <p-splitButton
+    label="{{ localStorage.getItem('email') }}"
+    icon="pi pi-user"
+    [model]="menuItems"
+    styleClass="p-button-text">
+  </p-splitButton>
+</span>
+
+
+
+      <i class="pi pi-shopping-cart" style="font-size: 2rem" (click)="showSidebar = true"></i>
+      <div id="cart-count" class="cart-count">{{totalProducts}}</div>
+
+
+      <ng-container *ngIf="showSidebar">
+        <app-panier [showSidebar]="showSidebar" (closeEvent)="closeSideBar()"></app-panier>
+      </ng-container>
+
+    </div>
+</p-toolbar>
+<p-splitter
+    [panelSizes]="[20, 80]"
+    [style]="{ height: 'calc(100vh - 100px)' }">
+    <ng-template pTemplate>
+        <div class="w-full">
+            <app-panel-menu />
+        </div>
+    </ng-template>
+    <ng-template pTemplate>
+        <div class="w-full app-content">
+            <router-outlet></router-outlet>
+        </div>
+    </ng-template>
+</p-splitter>
+
+<ng-container *ngIf="display">
+  <app-login [display]="display" (closeEvent)="closeDialog()" ></app-login>
+</ng-container>

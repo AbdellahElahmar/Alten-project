@@ -1,0 +1,10 @@
+version: '2'
+services:
+  product-trial-postgresql:
+    image: postgres
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
