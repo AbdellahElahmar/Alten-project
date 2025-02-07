@@ -1,27 +1,39 @@
-Description
-Ce projet est une application e-commerce qui permet aux utilisateurs de parcourir des produits, d'ajouter des articles à leur panier et de gérer leurs achats. Il comprend une interface utilisateur développée avec Angular et un back-end basé sur Spring Boot.
+# E-commerce App
 
-Fonctionnalités
-Front-end
-Shop
-Affichage des produits avec toutes leurs informations pertinentes
-Ajout d'un produit au panier directement depuis la liste des produits
-Suppression d'un produit du panier
-Affichage du nombre d'articles dans le panier via un badge
-Visualisation des produits du panier
-Contact
-Ajout d'un onglet "Contact" dans la barre latérale
-Création d'une page de contact avec un formulaire
-Champs requis :
-Email (obligatoire)
-Message (obligatoire, max 300 caractères)
-Affichage d'un message de confirmation après envoi
-Bonus
-Ajout d'un système de pagination et/ou de filtrage sur la liste des produits
-Modification de la quantité des produits directement depuis la liste et le panier
-Back-end
-Gestion des produits
-Ressource	POST	GET	PATCH	PUT	DELETE
-/products	✅	✅	❌	❌	❌
-/products/:id	❌	✅	✅	❌	✅
-Un produit est défini comme suit :
+## Description  
+Application e-commerce permettant la gestion de produits, un panier d'achat et une liste d'envies. Développée avec Angular et Spring Boot.  
+
+## Fonctionnalités  
+
+### Front-end  
+- Affichage des produits avec leurs informations  
+- Ajout et suppression de produits dans le panier  
+- Affichage du nombre d'articles dans le panier  
+- Visualisation des produits du panier  
+- Page "Contact" avec formulaire (email et message obligatoires, max 300 caractères)  
+- Confirmation après envoi du message  
+- (Bonus) Pagination et filtrage des produits  
+- (Bonus) Modification des quantités dans la liste et le panier  
+
+### Back-end  
+- API REST pour la gestion des produits  
+- Stockage des produits en base de données SQL/NoSQL ou fichier JSON  
+- Authentification via JWT  
+- Création de compte et connexion utilisateur  
+- Accès restreint aux modifications produits (uniquement `admin@admin.com`)  
+- Gestion du panier et de la liste d'envies  
+- (Bonus) Documentation API avec Postman/Swagger  
+
+## Installation  
+
+### Back-end  
+## git clone <url-du-repo>  
+## cd backend  
+## mvn install  
+## mvn spring-boot:run  
+
+
+### Front-end  
+## cd frontend  
+## npm install  
+## npm run start   
